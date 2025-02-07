@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="icon" href="icon2-modified.png" type="image/icon type">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('bg.avif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2, p{
+            color: whitesmoke;
+            /* margin: 5px; */
+        }
+
+        .hidden {
+            display: none;
+        }
+        .form-container {
+            background-color: rgba(9, 9, 9,.8);
+            /* Adjust the transparency by changing the alpha value (0.5 in this case) */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ebe9ed;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            color: #fff;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.01);
+            width: 95%;
+        }
+
+       
+        select option {
+            background-color: #000;
+            /* Set background color of the options to black */
+            color: #fff;
+            /* Set text color of the options to white */
+        }
+
+        button {
+            padding: 10px;
+            background-color: #032230;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #021720;
+        }
+        img{
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        .hidden { display: none; }
+        @media (max-width: 480px) {
+            body {
+                background-image: url(bg2.jpg);
+                background-size: cover;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form id="registrationForm"  action="/registration/create" method="POST">
+        <div id="step1">
+            <h2>Step 1: Information Details</h2><br>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="fullname" placeholder="Enter your name" required>
+            
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="whatsapp">WhatsApp Number:</label>
+            <input type="number" id="whatsapp" name="number" placeholder="Enter your WhatsApp number" required>
+
+            <label for="branch">Branch:</label>
+            <select id="branch" name="branch" required>
+                <option value="cs">CS</option>
+                <option value="it">IT</option>
+                <option value="aiml">AIML</option>
+                <option value="aids">AIDS</option>
+                <option value="entc">ENTC</option>
+                <option value="other">Other</option>
+            </select>
+            
+            <label for="division">Division:</label>
+            <select id="division" name="division" required>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+            
+            
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <div id="step2" class="hidden">
+            <h2>Step 2: Payment</h2><br>
+            <p>Scan the QR code to pay <b>Rs 299</b> .</p>
+            <img src="bg.avif" alt="QR Code" width="200" height="200px"><br><br>
+            <label for="transactionId">Transaction ID:</label>
+            <input type="text" id="transactionId" name="transactionid" placeholder="Make sure the ID is correct !"><br><br>
+            <label for="college">WhatsApp Number:</label>
+            <input type="text" id="college" name="college" placeholder="Enter Your College Name" required>
+            <button type="button" onclick="previousStep()">Back</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function nextStep() {
+        const name = document.getElementById('name').value;
+        const branch = document.getElementById('branch').value;
+        const division = document.getElementById('division').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+
+        if (name && branch && division && whatsapp) {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        } else {
+            alert('Please fill in all fields before proceeding.');
+        }
+    }
+
+    function previousStep() {
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step1').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
