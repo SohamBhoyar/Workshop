@@ -2,7 +2,7 @@
 // Mongoose for interacting with MongoDB
 const mongoose = require('mongoose'); 
 const config = require("config"); // Config module to manage configurations (e.g., database URI)
-const dbgr = require('debug')("development:mongoose"); // Debugging tool to log messages for development
+const dbgr = require('debug')("production:mongoose"); // Debugging tool to log messages for development
 
 // Connecting to the MongoDB database using the URI from the config file
 mongoose
