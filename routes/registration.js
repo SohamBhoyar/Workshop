@@ -11,7 +11,7 @@ router.get('/', async function(req, res) {
 router.post('/create', async function(req, res) {
     try {
         // Extracting project details from the request body
-        let { fullname, email, number, branch, division, transactionid, college } = req.body;
+        let { fullname,  number, branch, division,  } = req.body;
 
         // Logging form data for debugging purposes
         // console.log("Form Data:", req.body);
@@ -19,7 +19,7 @@ router.post('/create', async function(req, res) {
 
         // Create a new project in the database with the provided data
         let candidate = await registration.create({
-            fullname, email, number, branch, division, transactionid, college
+            fullname,  number, branch, division, 
         });
 
 
